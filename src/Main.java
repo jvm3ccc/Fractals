@@ -1,14 +1,14 @@
 public class Main {
 
-    public static float laenge = 243f;
-    public static int iterationen = 3;
-    public static int result = 0;
+    private static float laenge = 531441;
+    private static int iterationen = 9;
+    private static int result = 0;
 
     public static void main(String[] args) {
 
         // Theorie: http://www.fraktalkunst.de/2012/02/03/koch-kurve-und-schneeflocke/
 
-        for( int i = 0; i <= iterationen; i++) {
+        for (int i = 0; i <= iterationen; i++) {
 
             if( i == 0 ) {
                 result = (int) laenge;
@@ -17,23 +17,18 @@ public class Main {
 
             float L = calcL(i);
             int N = calcN(i);
-            result += L * N;
+            result = (int) (L * N);
         }
 
         System.out.println("Ergebnis: " + result);
 
     }
 
-    public static int calcN(int n) {
-        return (int) Math.pow(laenge, n);
+    private static int calcN(int n) {
+        return 3 * (int) Math.pow(4, n);
     }
 
-    public static float calcL(int n) {
-        float tmpL = laenge / 3f;
-        float newL = (float) Math.pow(tmpL, n);
-        return newL;
+    private static float calcL(int n) {
+        return laenge * (float) Math.pow(3, -n);
     }
-
-
-
 }
